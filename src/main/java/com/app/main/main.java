@@ -32,7 +32,6 @@ class Main {
             ServiceImpl idp = new ServiceImpl();
 
             idp.getIndividualPnL(rows);
-            ;
 
         } catch (JsonGenerationException e) {
             e.printStackTrace();

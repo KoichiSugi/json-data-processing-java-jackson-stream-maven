@@ -1,7 +1,6 @@
 package com.app.main;
 
 import com.app.service.ServiceImpl;
-import com.app.user.GroupTrade;
 import com.app.user.Row;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -18,12 +17,10 @@ import java.util.List;
  * @Author Koichi Sugi
  */
 class Main {
-    public static final File ClientsRecords = new File("src/main/resources/ClientsRecords.json");
-    public static final File GroupTrade = new File("src/main/resources/GroupTrade.json");
+    public static final File ClientsRecords = new File("src/main/resources/MOCK_DATA.json");
 
     public static void main(String[] args) {
         String ClientsRecordPath = ClientsRecords.getAbsolutePath();
-        String GroupTradePath = GroupTrade.getAbsolutePath();
         HashMap<Integer, Float> groupPnL = new HashMap<>();
         HashMap<Integer, Float> clientTotalPnl = new HashMap<>();
 
@@ -32,14 +29,10 @@ class Main {
 
         try {
             List<Row> rows = Arrays.asList(mapper.treeToValue(mapper.readTree(new File(ClientsRecordPath)).get("rows"), Row[].class));
-            List<GroupTrade> groupTrades = Arrays.asList(mapper.treeToValue(mapper.readTree(new File(GroupTradePath)).get("rows"), GroupTrade[].class));
             ServiceImpl idp = new ServiceImpl();
 
             idp.getIndividualPnL(rows);
-            groupPnL = idp.getGroupPnL(groupTrades);
-            clientTotalPnl = idp.getClientTotalPnL(groupTrades, rows);
-            //Serialize JSON
-            idp.serializeJson(groupPnL, clientTotalPnl, groupTrades, rows);
+            ;
 
         } catch (JsonGenerationException e) {
             e.printStackTrace();

@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="json-data-processing-java-jackson-stream-maven" />
         <module name="JsonDataProcessing" />
         <module name="json-data-processing-java-maven" />
       </profile>

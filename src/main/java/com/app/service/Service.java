@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface Service {
     HashMap<Integer, Float> getIndividualPnL(List<Row> rows);
+
+    void serializeJson( List<Row> rows, HashMap<Integer, Float> individualPnL);
 }

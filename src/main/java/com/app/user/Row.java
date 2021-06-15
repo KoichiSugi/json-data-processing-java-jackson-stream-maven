@@ -19,7 +19,6 @@ import lombok.Data;
 @Generated("jsonschema2pojo")
 
 public class Row {
-
     @JsonProperty("user_id")
     private int userId;
     @JsonProperty("email")
@@ -30,5 +29,7 @@ public class Row {
     private float swaps;
     @JsonProperty("profit")
     private float profit;
+
+    private float pnL;
 
 }

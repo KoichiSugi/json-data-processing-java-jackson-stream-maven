@@ -30,8 +30,10 @@ class Main {
         try {
             List<Row> rows = Arrays.asList(mapper.treeToValue(mapper.readTree(new File(ClientsRecordPath)).get("rows"), Row[].class));
             ServiceImpl idp = new ServiceImpl();
+            HashMap<Integer, Float> individualPnL = idp.getIndividualPnL(rows);
 
-            idp.getIndividualPnL(rows);
+            System.out.println(idp.getObjectsFromRow(rows, 96224));
+            idp.serializeJson(rows, individualPnL);
 
         } catch (JsonGenerationException e) {
             e.printStackTrace();
